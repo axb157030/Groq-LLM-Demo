@@ -1,6 +1,7 @@
-# Groq LLM + RAG Demo
+# Groq LLM Demo
 
-uses the **Groq LLM**  to answer some questions including one question that uses **Retrieval‑Augmented Generation (RAG)** to answer a question. to run it [comamnd to install the dependcies] and run it
+This program uses the Groq LLM to answer several questions, including one question that uses Retrieval-Augmented Generation (RAG).  
+The script loads a text file, builds a FAISS vector store, retrieves relevant text chunks, and uses Groq to answer a question using that retrieved context.
 ---
 
 ##  What This Project Does
