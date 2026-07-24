@@ -1,0 +1,49 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# Environment variables / secrets
+.env
+*.env
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# FAISS index files (if you save them)
+*.faiss
+*.index
+
+# HuggingFace / model cache
+~/.cache/
+huggingface/
+transformers/
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Debug and test files
+debug/
