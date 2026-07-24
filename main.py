@@ -8,27 +8,31 @@ from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_core.prompts import ChatPromptTemplate
 
+# Create Groq LLM instance
 chat_llm = ChatGroq(
     model_name="llama-3.1-8b-instant",
     temperature=0,
     groq_api_key=os.getenv("GEN-AI-API-KEY")
 )
-
+# Sending message and getting response from LLM
 test_response = chat_llm.invoke([
     HumanMessage(content="Explain about the benefits of using Groq for AI workloads.")
 ])
 
-from langchain_core.prompts import ChatPromptTemplate
-
+# Building a prompt template for a specific task
 alien_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are Neil deGrasse Tyson."),
     ("human", "Tell me about alien life in the {location} and which celestial bodies are most likely to harbor it?")
 ])
+# Invoking the prompt with a specific location
 alien_response = alien_prompt.invoke({"location": "the rocky planets of our solar system"})
 parser = StrOutputParser()
 
+# Creating a chain of prompt, LLM, and parser
 chain = alien_prompt | chat_llm | parser
+# Invoking the chain with a specific location and getting the response from the LLM
 alien_response = chain.invoke({"location": "the rocky planets of our solar system"})
 
 # RAG
@@ -76,3 +80,4 @@ if __name__ == "__main__":
     print(rag_answer("Describe a fantasy creature that lives in the mountains."))
     print("\n" + "."*60 + "\n")
     print(rag_answer("Explain the ecology of of small forest-dwelling creatures."))
+    # Thank you FreeCodeCamp
